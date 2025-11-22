@@ -119,25 +119,28 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px 16px 100px;
-      /* Correção para centralização */
+      /* Mantido para centralizar o título e as sections */
       display: flex; 
       flex-direction: column; 
       align-items: center;
     }
+
+    /* NOVO: Envolvedor para garantir a centralização com 'display: block' na section */
+    .centralizer-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
     
-    /* CORREÇÃO AQUI para centralizar o grid de produtos */
+    /* CORREÇÃO AQUI: Voltamos ao display: none/block para que o JS funcione */
     .category-section {
       display: none;
       width: 100%;
       max-width: 1200px;
-      /* NOVO: Adiciona Flexbox para centralizar o grid dentro da seção */
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Garante que o título e o grid fiquem centralizados */
     }
 
     .category-section.active {
-      display: flex; /* Mantenha 'flex' para exibir */
+      display: block; /* Garante que apenas a seção ativa seja exibida */
     }
 
     .category-title {
@@ -155,9 +158,8 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
       gap: 20px;
       margin-top: 20px;
-      /* Remove o justify-content: center daqui, pois o container já cuida disso */
       width: 100%; /* Garante que ele use a largura total */
-      max-width: 900px; /* Limita a largura do grid em telas grandes para evitar que ele estique demais e desloque itens */
+      max-width: 900px; /* Limita a largura do grid em telas grandes */
     }
     
     /* Responsividade do Grid */
@@ -650,193 +652,203 @@
   </header>
   <nav class="nav-tabs" id="navTabs"><button class="tab-button active" data-category="mimos">Mimos</button> <button class="tab-button" data-category="biscoitos">Biscoitos</button> <button class="tab-button" data-category="sobremesas">Sobremesas</button> <button class="tab-button" data-category="tacas">Taças e Tortas</button> <button class="tab-button" data-category="salgadas">Tortas Salgadas</button>
   </nav>
-  <div class="container"><section class="category-section active" id="mimos">
+  <div class="container">
+   <section class="category-section active" id="mimos">
     <h2 class="category-title">🎁 Mimos - Presente em Forma de Doce</h2>
-    <div class="products-grid">
-     <div class="product-card">
-      <div class="product-image">
-        🍪
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Pão de Mel Mini Redondo</h3>
-       <p class="product-description">Delicioso pão de mel em formato mini</p>
-       <div class="product-info"><span class="product-price">R$ 5,50</span>
-       </div><button class="add-button" onclick="addToCart('Pão de Mel Mini Redondo', 5.50)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-     <div class="product-card">
-      <div class="product-image">
-        🎄
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Pão de Mel Árvore de Natal</h3>
-       <p class="product-description">Formato especial de Natal</p>
-       <div class="product-info"><span class="product-price">R$ 9,50</span>
-       </div><button class="add-button" onclick="addToCart('Pão de Mel Árvore de Natal', 9.50)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-     <div class="product-card">
-      <div class="product-image">
-        🎁
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Pão de Mel Caixinha de Presente</h3>
-       <p class="product-description">Formato de presente natalino</p>
-       <div class="product-info"><span class="product-price">R$ 9,50</span>
-       </div><button class="add-button" onclick="addToCart('Pão de Mel Caixinha de Presente', 9.50)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-     <div class="product-card">
-      <div class="product-image">
-        📦
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Caixa de Pão de Mel</h3>
-       <p class="product-description">1 Árvore + 2 Presentes • Acompanha sacola kraft</p>
-       <div class="product-info"><span class="product-price">R$ 32,00</span>
-       </div><button class="add-button" onclick="addToCart('Caixa de Pão de Mel', 32.00)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-    </div>
-   </section><section class="category-section" id="biscoitos">
+    <div class="centralizer-wrapper"> <div class="products-grid">
+         <div class="product-card">
+          <div class="product-image">
+            🍪
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Pão de Mel Mini Redondo</h3>
+           <p class="product-description">Delicioso pão de mel em formato mini</p>
+           <div class="product-info"><span class="product-price">R$ 5,50</span>
+           </div><button class="add-button" onclick="addToCart('Pão de Mel Mini Redondo', 5.50)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+         <div class="product-card">
+          <div class="product-image">
+            🎄
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Pão de Mel Árvore de Natal</h3>
+           <p class="product-description">Formato especial de Natal</p>
+           <div class="product-info"><span class="product-price">R$ 9,50</span>
+           </div><button class="add-button" onclick="addToCart('Pão de Mel Árvore de Natal', 9.50)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+         <div class="product-card">
+          <div class="product-image">
+            🎁
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Pão de Mel Caixinha de Presente</h3>
+           <p class="product-description">Formato de presente natalino</p>
+           <div class="product-info"><span class="product-price">R$ 9,50</span>
+           </div><button class="add-button" onclick="addToCart('Pão de Mel Caixinha de Presente', 9.50)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+         <div class="product-card">
+          <div class="product-image">
+            📦
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Caixa de Pão de Mel</h3>
+           <p class="product-description">1 Árvore + 2 Presentes • Acompanha sacola kraft</p>
+           <div class="product-info"><span class="product-price">R$ 32,00</span>
+           </div><button class="add-button" onclick="addToCart('Caixa de Pão de Mel', 32.00)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+        </div>
+    </div> </section>
+   
+   <section class="category-section" id="biscoitos">
     <h2 class="category-title">🍪 Biscoitos</h2>
-    <div class="products-grid">
-     <div class="product-card">
-      <div class="product-image">
-        ⭐
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Biscoito Amanteigado Natalino</h3>
-       <p class="product-description">Formato Natalino • Inclui TAG de Natal + saquinho transparente</p>
-       <div class="product-info"><span class="product-price">R$ 3,80</span>
-       </div><button class="add-button" onclick="addToCart('Biscoito Amanteigado Natalino', 3.80)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-    </div>
-   </section><section class="category-section" id="sobremesas">
+    <div class="centralizer-wrapper"> <div class="products-grid">
+         <div class="product-card">
+          <div class="product-image">
+            ⭐
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Biscoito Amanteigado Natalino</h3>
+           <p class="product-description">Formato Natalino • Inclui TAG de Natal + saquinho transparente</p>
+           <div class="product-info"><span class="product-price">R$ 3,80</span>
+           </div><button class="add-button" onclick="addToCart('Biscoito Amanteigado Natalino', 3.80)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+        </div>
+    </div> </section>
+   
+   <section class="category-section" id="sobremesas">
     <h2 class="category-title">🍰 Sobremesas</h2>
-    <div class="products-grid">
-     <div class="product-card">
-      <div class="product-image">
-        🍇
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Bombom de Uva</h3>
-       <p class="product-description">Aprox. 1.300 kg • Serve 8 a 10 pessoas</p>
-       <div class="product-info"><span class="product-price">R$ 119,00</span>
-       </div><button class="add-button" onclick="addToCart('Bombom de Uva', 119.00)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-     <div class="product-card">
-      <div class="product-image">
-        🍓
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Bombom de Morango</h3>
-       <p class="product-description">Aprox. 1.300 kg • Serve 8 a 10 pessoas</p>
-       <div class="product-info"><span class="product-price">R$ 129,00</span>
-       </div><button class="add-button" onclick="addToCart('Bombom de Morango', 129.00)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-     <div class="product-card">
-      <div class="product-image">
-        🍍
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Surpresa de Abacaxi</h3>
-       <p class="product-description">Aprox. 1.300 kg • Serve 8 a 10 pessoas</p>
-       <div class="product-info"><span class="product-price">R$ 98,00</span>
-       </div><button class="add-button" onclick="addToCart('Surpresa de Abacaxi', 98.00)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-    </div>
-   </section><section class="category-section" id="tacas">
+    <div class="centralizer-wrapper"> <div class="products-grid">
+         <div class="product-card">
+          <div class="product-image">
+            🍇
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Bombom de Uva</h3>
+           <p class="product-description">Aprox. 1.300 kg • Serve 8 a 10 pessoas</p>
+           <div class="product-info"><span class="product-price">R$ 119,00</span>
+           </div><button class="add-button" onclick="addToCart('Bombom de Uva', 119.00)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+         <div class="product-card">
+          <div class="product-image">
+            🍓
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Bombom de Morango</h3>
+           <p class="product-description">Aprox. 1.300 kg • Serve 8 a 10 pessoas</p>
+           <div class="product-info"><span class="product-price">R$ 129,00</span>
+           </div><button class="add-button" onclick="addToCart('Bombom de Morango', 129.00)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+         <div class="product-card">
+          <div class="product-image">
+            🍍
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Surpresa de Abacaxi</h3>
+           <p class="product-description">Aprox. 1.300 kg • Serve 8 a 10 pessoas</p>
+           <div class="product-info"><span class="product-price">R$ 98,00</span>
+           </div><button class="add-button" onclick="addToCart('Surpresa de Abacaxi', 98.00)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+        </div>
+    </div> </section>
+   
+   <section class="category-section" id="tacas">
     <h2 class="category-title">🍨 Taças e Tortas Supreme</h2>
-    <div class="products-grid">
-     <div class="product-card">
-      <div class="product-image">
-        🍓
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Taça Supreme de Brownie - Morango</h3>
-       <p class="product-description">Aprox. 1.300 kg • Serve até 10 pessoas</p>
-       <div class="product-info"><span class="product-price">R$ 129,00</span>
-       </div><button class="add-button" onclick="addToCart('Taça Supreme de Brownie - Morango', 129.00)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-     <div class="product-card">
-      <div class="product-image">
-        🥭
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Taça Supreme de Brownie - Maracujá</h3>
-       <p class="product-description">Aprox. 1.300 kg • Serve até 10 pessoas</p>
-       <div class="product-info"><span class="product-price">R$ 129,00</span>
-       </div><button class="add-button" onclick="addToCart('Taça Supreme de Brownie - Maracujá', 129.00)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-     <div class="product-card">
-      <div class="product-image">
-        🍌
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Torta Banoffe</h3>
-       <p class="product-description">Aprox. 1.500 kg • Serve 10 a 12 pessoas</p>
-       <div class="product-info"><span class="product-price">R$ 102,00</span>
-       </div><button class="add-button" onclick="addToCart('Torta Banoffe', 102.00)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-     <div class="product-card">
-      <div class="product-image">
-        🍫
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Torta Holandesa</h3>
-       <p class="product-description">Aprox. 1.600 kg • Serve 10 a 12 pessoas</p>
-       <div class="product-info"><span class="product-price">R$ 124,00</span>
-       </div><button class="add-button" onclick="addToCart('Torta Holandesa', 124.00)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-     <div class="product-card">
-      <div class="product-image">
-        🍋
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Torta de Limão</h3>
-       <p class="product-description">Aprox. 1.500 kg • Serve 10 a 12 pessoas</p>
-       <div class="product-info"><span class="product-price">R$ 98,00</span>
-       </div><button class="add-button" onclick="addToCart('Torta de Limão', 98.00)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-    </div>
-   </section><section class="category-section" id="salgadas">
+    <div class="centralizer-wrapper"> <div class="products-grid">
+         <div class="product-card">
+          <div class="product-image">
+            🍓
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Taça Supreme de Brownie - Morango</h3>
+           <p class="product-description">Aprox. 1.300 kg • Serve até 10 pessoas</p>
+           <div class="product-info"><span class="product-price">R$ 129,00</span>
+           </div><button class="add-button" onclick="addToCart('Taça Supreme de Brownie - Morango', 129.00)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+         <div class="product-card">
+          <div class="product-image">
+            🥭
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Taça Supreme de Brownie - Maracujá</h3>
+           <p class="product-description">Aprox. 1.300 kg • Serve até 10 pessoas</p>
+           <div class="product-info"><span class="product-price">R$ 129,00</span>
+           </div><button class="add-button" onclick="addToCart('Taça Supreme de Brownie - Maracujá', 129.00)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+         <div class="product-card">
+          <div class="product-image">
+            🍌
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Torta Banoffe</h3>
+           <p class="product-description">Aprox. 1.500 kg • Serve 10 a 12 pessoas</p>
+           <div class="product-info"><span class="product-price">R$ 102,00</span>
+           </div><button class="add-button" onclick="addToCart('Torta Banoffe', 102.00)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+         <div class="product-card">
+          <div class="product-image">
+            🍫
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Torta Holandesa</h3>
+           <p class="product-description">Aprox. 1.600 kg • Serve 10 a 12 pessoas</p>
+           <div class="product-info"><span class="product-price">R$ 124,00</span>
+           </div><button class="add-button" onclick="addToCart('Torta Holandesa', 124.00)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+         <div class="product-card">
+          <div class="product-image">
+            🍋
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Torta de Limão</h3>
+           <p class="product-description">Aprox. 1.500 kg • Serve 10 a 12 pessoas</p>
+           <div class="product-info"><span class="product-price">R$ 98,00</span>
+           </div><button class="add-button" onclick="addToCart('Torta de Limão', 98.00)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+        </div>
+    </div> </section>
+   
+   <section class="category-section" id="salgadas">
     <h2 class="category-title">🥧 Tortas Salgadas</h2>
-    <div class="products-grid">
-     <div class="product-card">
-      <div class="product-image">
-        🍗
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Torta Salgada de Frango</h3>
-       <p class="product-description">Aprox. 1.300 kg</p>
-       <div class="product-info"><span class="product-price">R$ 96,00</span>
-       </div><button class="add-button" onclick="addToCart('Torta Salgada de Frango', 96.00)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-     <div class="product-card">
-      <div class="product-image">
-        🌴
-      </div>
-      <div class="product-details">
-       <h3 class="product-name">Torta Salgada de Palmito</h3>
-       <p class="product-description">Aprox. 1.300 kg</p>
-       <div class="product-info"><span class="product-price">R$ 104,00</span>
-       </div><button class="add-button" onclick="addToCart('Torta Salgada de Palmito', 104.00)">Adicionar ao Carrinho</button>
-      </div>
-     </div>
-    </div>
-   </section>
-  </div><div class="cart-float" id="cartFloat" onclick="toggleCart()"><span style="font-size: 1.5em;">🛒</span> <span class="cart-badge" id="cartBadge">0</span>
+    <div class="centralizer-wrapper"> <div class="products-grid">
+         <div class="product-card">
+          <div class="product-image">
+            🍗
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Torta Salgada de Frango</h3>
+           <p class="product-description">Aprox. 1.300 kg</p>
+           <div class="product-info"><span class="product-price">R$ 96,00</span>
+           </div><button class="add-button" onclick="addToCart('Torta Salgada de Frango', 96.00)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+         <div class="product-card">
+          <div class="product-image">
+            🌴
+          </div>
+          <div class="product-details">
+           <h3 class="product-name">Torta Salgada de Palmito</h3>
+           <p class="product-description">Aprox. 1.300 kg</p>
+           <div class="product-info"><span class="product-price">R$ 104,00</span>
+           </div><button class="add-button" onclick="addToCart('Torta Salgada de Palmito', 104.00)">Adicionar ao Carrinho</button>
+          </div>
+         </div>
+        </div>
+    </div> </section>
+  </div>
+  <div class="cart-float" id="cartFloat" onclick="toggleCart()"><span style="font-size: 1.5em;">🛒</span> <span class="cart-badge" id="cartBadge">0</span>
   </div><div class="cart-panel" id="cartPanel">
    <div class="cart-header">
     <h2 class="cart-title">Meu Carrinho</h2><button class="close-cart" onclick="toggleCart()">×</button>
