@@ -32,6 +32,16 @@
       top: 0;
       z-index: 100;
     }
+    
+    /* Regras do Logo */
+    .store-logo {
+        max-width: 120px; 
+        height: auto;
+        margin-bottom: 8px; 
+        display: block; 
+        margin-left: auto; 
+        margin-right: auto; /* Centraliza o logo */
+    }
 
     .store-title {
       font-family: 'Dancing Script', cursive;
@@ -53,25 +63,23 @@
     /* Navigation Tabs */
     .nav-tabs {
       display: flex;
-      /* Alterado para scroll horizontal */
-      overflow-x: scroll; 
-      justify-content: flex-start; /* Alinha à esquerda no mobile */
+      overflow-x: scroll; /* Permite rolagem horizontal no mobile */
+      justify-content: flex-start;
       background-color: #ffffff;
       padding: 12px 8px;
       gap: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       position: sticky;
-      top: 90px;
+      top: 100px; /* Ajustado para dar espaço ao Header */
       z-index: 99;
       -webkit-overflow-scrolling: touch;
-      /* Removido justify-content: center para mobile */
     }
     
-    /* Media Query para centralizar no desktop */
+    /* Media Query para centralizar e remover scroll no desktop */
     @media (min-width: 769px) {
         .nav-tabs {
             justify-content: center;
-            overflow-x: hidden; /* Remove barra de rolagem no desktop */
+            overflow-x: hidden; 
         }
     }
 
@@ -135,13 +143,13 @@
     /* Product Grid */
     .products-grid {
       display: grid;
-      /* PADRÃO: 2 colunas no celular, 3 ou mais no desktop */
+      /* Padrão: 2 colunas no celular, 3 ou mais no desktop */
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
       gap: 20px;
       margin-top: 20px;
     }
     
-    /* Aumenta o tamanho mínimo da coluna para desktop */
+    /* Responsividade do Grid */
     @media (min-width: 600px) {
         .products-grid {
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -173,8 +181,8 @@
       position: relative;
     }
     
-    /* Ajuste para mobile para as imagens não ficarem tão grandes */
-    @media (max-width: 600px) {
+    /* Ajuste de imagem e logo para mobile */
+    @media (max-width: 768px) {
         .product-image {
             height: 150px;
             font-size: 3em;
@@ -183,7 +191,12 @@
         .product-details {
             padding: 12px;
         }
+        
+        .store-logo {
+            max-width: 100px; 
+        }
     }
+
 
     .product-details {
       padding: 16px;
@@ -259,7 +272,7 @@
       z-index: 1000;
     }
     
-    /* Mobile - Diminui o botão flutuante */
+    /* Mobile - Ajusta botão flutuante */
     @media (max-width: 600px) {
         .cart-float {
             width: 50px;
@@ -582,8 +595,6 @@
         font-size: 1.6em;
       }
 
-      /* Removido o grid-template-columns específico aqui, deixando o auto-fill na regra principal fazer o trabalho */
-
       .container {
         padding: 10px 10px 80px; /* Reduz o padding lateral e inferior */
       }
@@ -593,13 +604,17 @@
       }
 
       .nav-tabs {
-        top: 80px;
+        top: 100px;
         padding: 8px 10px; /* Ajusta padding da aba */
       }
       
       .tab-button {
           padding: 8px 16px; /* Ajusta padding do botão da aba */
           font-size: 0.85em;
+      }
+      
+      .header {
+        padding: 10px; /* Ajusta padding do header no mobile */
       }
     }
   </style>
@@ -609,9 +624,11 @@
  </head>
  <body>
   <header class="header">
-   <h1 class="store-title" id="storeName">Doces da Rê</h1>
-   <p class="store-slogan">Doces Diversos</p>
-   <p class="store-slogan" style="margin-top: 4px; font-weight: 500;">Nosso Cardápio</p>
+    <img src="img/logo.jpg" alt="Logo Doces da Rê" class="store-logo"> 
+    
+    <h1 class="store-title" id="storeName">Doces da Rê</h1>
+    <p class="store-slogan">Doces Diversos</p>
+    <p class="store-slogan" style="margin-top: 4px; font-weight: 500;">Nosso Cardápio</p>
   </header>
   <nav class="nav-tabs" id="navTabs"><button class="tab-button active" data-category="mimos">Mimos</button> <button class="tab-button" data-category="biscoitos">Biscoitos</button> <button class="tab-button" data-category="sobremesas">Sobremesas</button> <button class="tab-button" data-category="tacas">Taças e Tortas</button> <button class="tab-button" data-category="salgadas">Tortas Salgadas</button>
   </nav>
@@ -933,7 +950,7 @@
       document.getElementById('checkoutModal').classList.remove('open');
     }
 
-    // FUNÇÃO submitOrder (corrigida no código anterior, mantida aqui)
+    // Função para enviar o pedido via WhatsApp
     function submitOrder(event) {
         event.preventDefault();
         
