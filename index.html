@@ -43,21 +43,18 @@
         margin-right: auto; /* Centraliza o logo */
     }
 
-    .store-title {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.8em;
-      color: #8a2e32;
-      margin: 0 0 4px 0;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    /* Novo estilo para o título principal do cardápio */
+    .main-cardapio-title {
+        font-family: 'Dancing Script', cursive; /* Fonte elegante */
+        font-size: 2.2em; /* Tamanho maior para chamar atenção */
+        color: #8a2e32; /* Cor de destaque (doce) */
+        margin: 4px 0 0 0;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
-
-    .store-slogan {
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.9em;
-      color: #8a2e32;
-      margin: 0;
-      font-weight: 400;
-      opacity: 0.9;
+    
+    .store-title, .store-slogan {
+        /* Oculta os títulos antigos (Doces da Rê e Slogan) */
+        display: none; 
     }
 
     /* Navigation Tabs */
@@ -194,6 +191,10 @@
         
         .store-logo {
             max-width: 100px; 
+        }
+        
+        .main-cardapio-title {
+            font-size: 1.8em;
         }
     }
 
@@ -587,10 +588,6 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .store-title {
-        font-size: 1.5em;
-      }
-
       .category-title {
         font-size: 1.6em;
       }
@@ -626,8 +623,8 @@
   <header class="header">
     <img src="img/logo.jpg" alt="Logo Doces da Rê" class="store-logo"> 
     
-    <h1 class="store-title" id="storeName">Nosso Cardápio</h1>
-  </header>
+    <h1 class="main-cardapio-title">Nosso Cardápio</h1>
+    </header>
   <nav class="nav-tabs" id="navTabs"><button class="tab-button active" data-category="mimos">Mimos</button> <button class="tab-button" data-category="biscoitos">Biscoitos</button> <button class="tab-button" data-category="sobremesas">Sobremesas</button> <button class="tab-button" data-category="tacas">Taças e Tortas</button> <button class="tab-button" data-category="salgadas">Tortas Salgadas</button>
   </nav>
   <div class="container"><section class="category-section active" id="mimos">
@@ -1001,7 +998,8 @@
         const storeNameElement = document.getElementById('storeName');
         const tabButtons = document.querySelectorAll('.tab-button');
         
-        storeNameElement.textContent = config.store_name || defaultConfig.store_name;
+        // Ocultado o nome da loja, mas mantido o placeholder no SDK
+        // storeNameElement.textContent = config.store_name || defaultConfig.store_name; 
         
         const categories = [
             config.category_1 || defaultConfig.category_1,
@@ -1042,4 +1040,3 @@
   </script>
   <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a2a5cbf139f1b33',t:'MTc2MzgzNDgwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
